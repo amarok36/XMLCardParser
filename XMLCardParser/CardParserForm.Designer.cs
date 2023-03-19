@@ -1056,19 +1056,19 @@ namespace XMLCardParser
             // 
             this.lptStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lptToolStripStatusLabel});
-            this.lptStatusStrip.Location = new System.Drawing.Point(0, 679);
+            this.lptStatusStrip.Location = new System.Drawing.Point(0, 689);
             this.lptStatusStrip.Name = "lptStatusStrip";
             this.lptStatusStrip.Size = new System.Drawing.Size(814, 22);
+            this.lptStatusStrip.SizingGrip = false;
             this.lptStatusStrip.TabIndex = 74;
             this.lptStatusStrip.Text = "status";
-            this.lptStatusStrip.SizingGrip = false;
             // 
             // XMLCardParserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(814, 701);
+            this.ClientSize = new System.Drawing.Size(814, 711);
             this.Controls.Add(this.lptDamagesPanel);
             this.Controls.Add(this.lptDropOffPanel);
             this.Controls.Add(this.lptTaxationPanel);
@@ -1086,11 +1086,12 @@ namespace XMLCardParser
             this.Controls.Add(this.lptTitle);
             this.Controls.Add(this.lptMenuStrip);
             this.Controls.Add(this.lptStatusStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.lptMenuStrip;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(830, 750);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(830, 39);
             this.Name = "XMLCardParserForm";
             this.Text = "XML Card Parser";
             this.lptMenuStrip.ResumeLayout(false);
