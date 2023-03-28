@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -105,6 +108,60 @@ namespace XMLCardParser
                 int lptDateDay = Convert.ToInt32(lptDate.Substring(8, 2));
                 lptDatePicker.Value = new DateTime(lptDateYear, lptDateMonth, lptDateDay);
 
+                DataTable dt1 = new DataTable();
+                dt1.Columns.Add("Доля", typeof(string));
+                dt1.Columns.Add("Порода", typeof(string));
+                dt1.Columns.Add("Высота", typeof(string));
+                dt1.Columns.Add("Возраст", typeof(string));
+
+
+                XmlNodeList nodeList1 = docXML.SelectNodes("/LPT/_taxation/_taxTrees/TaxTree");
+                foreach (XmlNode node in nodeList1)
+                {
+                    DataRow dtrow = dt1.NewRow();
+                    dtrow["Доля"] = node["_coef"].InnerText;
+                    dtrow["Порода"] = node["_species"].InnerText;
+                    dtrow["Высота"] = node["_h"].InnerText;
+                    dtrow["Возраст"] = node["_age"].InnerText;
+
+                    dt1.Rows.Add(dtrow);
+                }
+
+                DataTable dt2 = new DataTable();
+                dt2.Columns.Add("Мероприятие", typeof(string));
+                dt2.Columns.Add("Площадь", typeof(string));
+                dt2.Columns.Add("Интенсивность", typeof(string));
+                dt2.Columns.Add("Запас", typeof(string));
+                XmlNodeList nodeList2 = docXML.SelectNodes("/LPT/_curSanAction");
+                foreach (XmlNode node in nodeList2)
+                {
+                    DataRow dtrow = dt2.NewRow();
+                    dtrow["Мероприятие"] = node["_actions"].InnerText;
+                    dtrow["Площадь"] = node["_s"].InnerText;
+                    dtrow["Интенсивность"] = node["_intensity"].InnerText;
+                    dtrow["Запас"] = node["_stock"].InnerText;
+                    dt2.Rows.Add(dtrow);
+                }
+
+                DataTable dt3 = dt1.Clone();  
+                foreach (DataColumn col in dt2.Columns)
+                {
+                    string newColumnName = col.ColumnName;
+                    dt3.Columns.Add(newColumnName, col.DataType);
+                }
+
+                IEnumerable<object[]> crossJoin =
+                    from r1 in dt1.AsEnumerable()
+                    from r2 in dt2.AsEnumerable()
+                    select r1.ItemArray.Concat(r2.ItemArray).ToArray();
+
+                foreach (object[] allFields in crossJoin)
+                {
+                    dt3.Rows.Add(allFields);
+                }
+
+                lptDataGridView.DataSource = dt3;
+
 
                 lptToolStripStatusLabel.Text = "Done";
             }
@@ -117,6 +174,7 @@ namespace XMLCardParser
             this.Close();
         }
 
-
     }
 }
+
+
