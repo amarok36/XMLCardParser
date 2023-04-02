@@ -66,7 +66,7 @@ namespace XMLCardParser
             // aboutProgrammerLabel
             // 
             this.aboutProgrammerLabel.AutoSize = true;
-            this.aboutProgrammerLabel.Location = new System.Drawing.Point(88, 174);
+            this.aboutProgrammerLabel.Location = new System.Drawing.Point(91, 174);
             this.aboutProgrammerLabel.Name = "aboutProgrammerLabel";
             this.aboutProgrammerLabel.Size = new System.Drawing.Size(128, 15);
             this.aboutProgrammerLabel.TabIndex = 3;
@@ -87,6 +87,7 @@ namespace XMLCardParser
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(330, 260);
             this.Name = "About";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "О программе";
             this.ResumeLayout(false);
             this.PerformLayout();

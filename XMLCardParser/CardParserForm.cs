@@ -177,7 +177,8 @@ namespace XMLCardParser
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About newAbout = new About();
-            newAbout.Show();
+            newAbout.StartPosition = FormStartPosition.CenterParent;
+            newAbout.ShowDialog();
         }
     }
 }
