@@ -177,6 +177,7 @@ namespace XMLCardParser
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.aboutToolStripMenuItem.Text = "О программе";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -864,7 +865,6 @@ namespace XMLCardParser
             this.MainMenuStrip = this.lptMenuStrip;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(830, 750);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(830, 39);
             this.Name = "XMLCardParserForm";
             this.Text = "XML Card Parser";

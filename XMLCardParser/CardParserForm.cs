@@ -174,6 +174,11 @@ namespace XMLCardParser
             this.Close();
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About newAbout = new About();
+            newAbout.Show();
+        }
     }
 }
 
